@@ -8,12 +8,14 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y \
     iputils-ping \
     nmap \
-    # Add any other tools you need here, for example:
     net-tools \
     iputils-ping \
     curl \
     wget \
-    #[other-packages-you-need] \
+    iptables \
     && rm -rf /var/lib/apt/lists/*
 
-# Any other custom commands
+# Containers network setup
+COPY ./config/setup-iptables.sh setup-iptables.sh
+RUN chmod +x setup-iptables.sh
+RUN sh setup-iptables.sh

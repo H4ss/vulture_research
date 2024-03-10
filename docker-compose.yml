@@ -5,12 +5,15 @@ services:
     networks:
       - vulture_net
     command: tail -f /dev/null
-
+    cap_add:
+      - NET_ADMIN
   ubuntu2:
     build: .
     command: tail -f /dev/null
     networks:
       - vulture_net
+    cap_add:
+      - NET_ADMIN
 
 networks:
   vulture_net:

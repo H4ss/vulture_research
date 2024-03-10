@@ -4,63 +4,26 @@ This guide outlines the setup of a Docker-based "malware" research environment, 
 
 # Prerequisites
 
-Before you begin, ensure you have Docker Desktop and Docker Compose installed on your machine. These tools are required to build and manage your Docker containers.
+- Launch the prestart.sh script
 
-Docker Desktop: Installation Guide
-Docker Compose: Comes with Docker Desktop installations.
-Verify the installations by running:
+- docker network inspect vulture_net
 
-bash
-Copy code
-docker --version
-docker-compose --version
-Environment Setup
-Clone the Repository
-If the project is hosted in a version control system, start by cloning the repository to your local machine:
+- make sure that the subnet displayed is the same as the subnet in the setup-iptables.sh in /config (ex: 172.19.0.0/16). If not change it.
 
-bash
-Copy code
-git clone [Repository URL]
-cd [Repository Name]
-Replace [Repository URL] and [Repository Name] with the actual URL and name of your project repository.
+- docker-compose up --build -d
 
-Build and Run the Containers
-Navigate to the directory containing the Dockerfile and docker-compose.yml, then build and start your containers:
+- docker-compose exec ubuntu1 bash / docker-compose exec ubuntu2 bash
 
-bash
-Copy code
-docker-compose up --build -d
-This command builds the Docker images based on the instructions in your Dockerfile, including the installation of nmap and other specified network tools, and starts the containers in detached mode.
+on both machine :
 
-Accessing the Containers
-To interact with a container and utilize the installed tools, use:
+launch the ./setup-iptables.sh in the root to setup the firewall
+NOTES:
 
-bash
-Copy code
-docker-compose exec ubuntu1 bash
-This command gives you a bash shell inside the ubuntu1 container. Repeat with ubuntu2 or other container names as needed.
+-> Now the machines can ping each other but not the outside world
+-> if you want to test it : - ping google.com should NOT succeed - ping ubuntu2 (if you are on ubuntu1) should succeed
 
-Using Network Scanning Tools
-With nmap and other tools installed, you can perform network scans and analyze network security from within your containers. For example, to use nmap:
+TODO:
 
-bash
-Copy code
-nmap -v [Target IP/Domain]
-Replace [Target IP/Domain] with the IP address or domain name of the network or system you wish to scan. Ensure you have permission to scan the target network or system.
+- Replication mechanism (vulnerability, regular chron file sharing, network scanning from the malware prototype ...)
 
-Customizing the Environment
-To add more tools or change the container setup:
-
-Update the Dockerfile to include new packages or configuration changes.
-Rebuild the images and containers with docker-compose up --build -d.
-Best Practices and Security Considerations
-Use Responsibly: Only scan networks and systems for which you have explicit permission.
-Isolation: This Docker-based setup provides a level of isolation from your host system, but always exercise caution when dealing with malware or conducting network scans.
-Documentation: Keep documentation up to date with any changes to the environment or installed tools.
-Cleanup
-To stop and remove the containers and network created by Docker Compose, run:
-
-bash
-Copy code
-docker-compose down
-This command cleans up your environment, removing the containers and default network, but retains your images and any data volumes.
+- A simple morphism mechanism from the malware prototype depending on an event (when it is copied, shifted from a place to another, executed, debugged ...)
