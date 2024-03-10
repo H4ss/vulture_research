@@ -20,7 +20,11 @@ launch the ./setup-iptables.sh in the root to setup the firewall
 NOTES:
 
 -> Now the machines can ping each other but not the outside world
--> if you want to test it : - ping google.com should NOT succeed - ping ubuntu2 (if you are on ubuntu1) should succeed
+
+if you want to test it :
+
+- ping google.com should NOT succeed
+- ping ubuntu2 (if you are on ubuntu1) should succeed
 
 TODO:
 
