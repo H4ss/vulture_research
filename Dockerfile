@@ -13,9 +13,13 @@ RUN apt-get update && apt-get install -y \
     curl \
     wget \
     iptables \
+    build-essential \
     && rm -rf /var/lib/apt/lists/*
 
 # Containers network setup
-COPY ./config/setup-iptables.sh setup-iptables.sh
-RUN chmod +x setup-iptables.sh
-RUN sh setup-iptables.sh
+COPY ./config/setup-iptables.sh /usr/src/setup-iptables.sh
+RUN chmod +x /usr/src/setup-iptables.sh
+RUN sh /usr/src/setup-iptables.sh
+
+# PoC setup
+COPY ./vulture_src /usr/src/vulture_src
