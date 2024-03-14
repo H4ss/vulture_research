@@ -10,6 +10,6 @@ in a school context ONLY. The use for malicious intent is forbidden. Epitech
 
 int main() {
   // Call a function defined in scanner.c
-  perform_scan("192.168.1.0/24");
+  perform_scan("172.19.0.1/24");
   return 0;
 }

@@ -9,17 +9,20 @@ RUN apt-get update && apt-get install -y \
     iputils-ping \
     nmap \
     net-tools \
-    iputils-ping \
     curl \
     wget \
     iptables \
     build-essential \
     && rm -rf /var/lib/apt/lists/*
 
+# Set the working directory to /usr/src
+WORKDIR /usr/src
+
 # Containers network setup
-COPY ./config/setup-iptables.sh /usr/src/setup-iptables.sh
-RUN chmod +x /usr/src/setup-iptables.sh
-RUN sh /usr/src/setup-iptables.sh
+# Note: With WORKDIR set, paths are relative to /usr/src
+COPY ./config/setup-iptables.sh setup-iptables.sh
+RUN chmod +x setup-iptables.sh && ./setup-iptables.sh
 
 # PoC setup
-COPY ./vulture_src /usr/src/vulture_src
+# Copies the entire vulture_src directory content into /usr/src/vulture_src
+COPY ./vulture_src vulture_src
