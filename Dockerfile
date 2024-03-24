@@ -20,6 +20,8 @@ RUN apt-get update && apt-get install -y \
 # Set the working directory to /usr/src
 WORKDIR /usr/src
 
+EXPOSE 4444
+
 # Containers network setup
 # Note: With WORKDIR set, paths are relative to /usr/src
 # COPY ./config/setup-iptables.sh setup-iptables.sh

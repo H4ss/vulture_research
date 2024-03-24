@@ -6,7 +6,7 @@ set -x
 echo "Setting up iptables rules..."
 
 # Allow outbound traffic to the subnet
-iptables -A OUTPUT -d 172.19.0.0/16 -j ACCEPT
+iptables -A OUTPUT -d 172.24.0.0/16 -j ACCEPT
 echo "Allowed outbound traffic within the 172.19.0.0/16 subnet."
 
 # Block all other outbound traffic
