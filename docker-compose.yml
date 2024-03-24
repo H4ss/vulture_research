@@ -5,8 +5,6 @@ services:
     networks:
       - vulture_net
     command: tail -f /dev/null
-    ports:
-      - "8080:4444"
     cap_add:
       - NET_ADMIN
     volumes:
@@ -14,8 +12,6 @@ services:
   ubuntu2:
     build: .
     command: tail -f /dev/null
-    ports:
-      - "8081:4444"
     networks:
       - vulture_net
     cap_add:

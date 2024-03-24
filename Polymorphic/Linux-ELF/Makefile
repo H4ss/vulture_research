@@ -5,7 +5,7 @@ SRC	=	src/main.c	\
 
 OBJ	=	$(SRC:.c=.o)
 
-NAME	=	PoCrypt
+NAME	=	polymorphic
 
 CC	=	gcc -o
 
