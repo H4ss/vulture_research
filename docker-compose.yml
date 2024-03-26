@@ -4,14 +4,14 @@ services:
     build: .
     networks:
       - vulture_net
-    command: tail -f /dev/null
+    # command: tail -f /dev/null
     cap_add:
       - NET_ADMIN
     volumes:
       - srvpublic:/home/public
   ubuntu2:
     build: .
-    command: tail -f /dev/null
+    # command: tail -f /dev/null
     networks:
       - vulture_net
     cap_add:
