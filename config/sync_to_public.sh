@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define source and destination directories
-SRC_DIR="/usr/src/replication/"
+SRC_DIR="/usr/src/desktop/"
 DEST_DIR="/home/public/"
 
 # Synchronize files from the source to the destination (maybe remove the delete)

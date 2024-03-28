@@ -32,10 +32,10 @@ RUN chmod +x ./scripts/exec_all_routine.sh
 RUN chmod +x ./scripts/populate_replication.sh
 
 # preparing the replication folder
-RUN mkdir replication
+RUN mkdir desktop
 # RUN echo "Agent "$(whoami) + " date: "$(date) > /usr/src/replication/$(whoami)_$(ifconfig | grep 'inet 172' | awk '{print $2}').txt
-RUN echo "This info should never leave this place" > /usr/src/replication/sensitive_info.secret
-RUN cp ./scripts/populate_replication.sh ./replication
+RUN echo "This info should never leave this place: vanilla > chocolate" > /usr/src/desktop/sensitive_info.secret
+RUN cp ./scripts/populate_replication.sh ./desktop
 
 # Add your script to crontab
 RUN (crontab -l ; echo "* * * * * /usr/src/scripts/sync_to_public.sh >> /usr/src/log/public_sync.log 2>&1") | crontab
