@@ -16,15 +16,16 @@ RUN apt-get update && apt-get install -y \
     build-essential \
     rsync \
     nano \
+    zip \
     && rm -rf /var/lib/apt/lists/*
 
 # Set the working directory to /usr/src
 WORKDIR /usr/src
 
-# Containers network setup
+# Containers setup
 # Note: With WORKDIR set, paths are relative to /usr/src
-# COPY ./config/setup-iptables.sh setup-iptables.sh
 COPY ./config scripts
+COPY ./tools/archives/important.zip ./
 RUN mkdir log # log folder for the script output that will be loaded as a cronjob
 RUN chmod +x ./scripts/setup-iptables.sh && ./scripts/setup-iptables.sh
 RUN chmod +x ./scripts/sync_to_public.sh
@@ -46,4 +47,4 @@ CMD ["cron", "-f"]
 
 # PoC setup
 # Copies the entire vulture_src directory content into /usr/src/vulture_src
-COPY ./vulture_src vulture_src
+#COPY ./vulture_src vulture_src
