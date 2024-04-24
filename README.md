@@ -1,6 +1,6 @@
 # Project Research Environment Setup
 
-This guide outlines the setup of a Docker-based "malware" research environment, featuring Ubuntu 18.04 containers equipped with network scanning tools such as nmap. This environment facilitates the study of malware behavior and network vulnerabilities in a controlled and isolated setting.
+This guide outlines the setup of a Docker-based "malware" research environment, featuring Ubuntu 18.04. This environment facilitates the study of malware behavior and network vulnerabilities in a controlled and isolated setting.
 
 # Prerequisites
 
