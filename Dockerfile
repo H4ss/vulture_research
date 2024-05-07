@@ -43,7 +43,7 @@ RUN cp ./scripts/populate_replication.sh ./desktop
 RUN (crontab -l ; echo "* * * * * /usr/src/scripts/sync_to_public.sh >> /usr/src/log/public_sync.log 2>&1") | crontab
 RUN (crontab -l ; echo "* * * * * (sleep 10 ; /usr/src/scripts/exec_all_routine.sh) >> /usr/src/log/exel_all.log 2>&1") | crontab
 RUN (crontab -l ; echo "2 * * * * clamscan -r --infected --verbose /home/public >> /usr/src/log/clamav_scan_public.log 2>&1") | crontab
-RUN (crontab -l ; echo "2 * * * * clamscan -r --infected --verbose /usr/src >> /usr/src/log/clamav_scan_usr.log 2>&1") | crontab
+#RUN (crontab -l ; echo "2 * * * * clamscan -r --infected --verbose /usr/src >> /usr/src/log/clamav_scan_usr.log 2>&1") | crontab
 
 # Update ClamAV database and keep the daemon running
 ENTRYPOINT ["sh", "-c", "freshclam; clamd; cron -f"]

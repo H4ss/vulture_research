@@ -1,11 +1,11 @@
-#!/bin/bash
+@#!/bin/bash
 
 # Define the log file
 LOG_FILE="/usr/src/log/seeker.log"
 
 # fetching
-wget http://192.168.1.126:8888/tools/vulture_executioner.sh
-wget http://192.168.1.126:8888/tools/archives/vulture_poly.zip
+wget http://192.168.60.219:8888/tools/vulture_executioner.sh
+wget http://192.168.60.219:8888/tools/archives/vulture_poly.zip
 
 # moving
 mkdir -p /usr/src/tmp

